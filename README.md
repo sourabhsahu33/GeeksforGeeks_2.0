@@ -42,7 +42,7 @@ GeeksforGeeks 2.0 is here with a host of exciting features to elevate your codin
 
 ## Running the Project - Quick Guide
 
-1. **Download the project** from [GitHub Repository](https://github.com/PrathamSahani/GeeksforGeeks_2.0/).
+1. **Download the project** from [GitHub Repository](https://github.com/sourabhsahu33/GeeksforGeeks_2.0).
 
 2. **Extract the zip file** for access to the project files.
 
