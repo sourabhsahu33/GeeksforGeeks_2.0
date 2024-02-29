@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+    <title>GeeksforGeeks 2.0</title>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: rgb(226, 220, 220);
+        }
+
+        #calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: white;
+            margin-top: -50px;
+        }
+
+        h2 {
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .btn {
+            padding: 10px 10px;
+            color: green;
+            border: 1px solid green;
+            font-size: 13px;
+            background: transparent;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .btn:hover {
+            color: white;
+            background: green;
+            transition: all 400ms;
+        }
+
+        .n {
+            color: green;
+            border: none;
+            text-decoration: none;
+        }
+
+        .n:hover {
+            color: white;
+
+        }
+
+        img {
+            width: 130px;
+            margin-top: -50px;
+        }
+    </style>
+    <!-- ======================== Subject Edit Form ========================== -->
+    <br><br>
+    <a href="{% url 'index' %}"> <img src="https://i.ibb.co/Vwfcd6R/gpt-removebg-preview.png" alt=""></a>
+
+    <div id="calculator">
+        <br>
+
+        <h2 style="text-align: center;">Edit Subject</h2>
+        <br>
+        <form method="post" action="{% url 'edit_subject' subject_id=subject_id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn">Save Changes</button>
+        </form>
+        <br>
+        <button class="btn"><a href="{% url 'cgpa_calculator' %}" class="n">Cancel</a></button>
+
+    </div>
+</body>
+
+</html>

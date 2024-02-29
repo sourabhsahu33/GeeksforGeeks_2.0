@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+    <title>GeeksforGeeks 2.0</title>
+    <!-- ================ Box Icons ================ -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    #gfg {
+        width: 15%;
+        margin-top: -35px;
+    }
+
+    body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+        scroll-padding-top: 2rem;
+        box-sizing: border-box;
+    }
+
+    /* =========Variables============= */
+    :root {
+        --container-color: white;
+        --second-color: green;
+        --text-color: #172317;
+        --bg-color: rgb(250, 243, 243);
+    }
+
+    ::selection {
+        color: var(--bg-color);
+        background: var(--second-color);
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    section {
+        padding: 3rem 0 2rem;
+    }
+
+    .container {
+        max-width: 1068px;
+        margin: auto;
+        width: 100%;
+
+    }
+
+    /* ========header=======. */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        z-index: 200;
+    }
+
+    header.shadow {
+        background: var(--bg-color);
+        box-shadow: 0 1px 4px gray;
+        transition: 0.4s;
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+    }
+
+    .login {
+        padding: 8px 14px;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 4px;
+        border: 2px solid green;
+        background: transparent;
+        color: green;
+        margin-top: -3%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .login:hover {
+        background: green;
+        color: white;
+        transition: 0.3s;
+
+    }
+
+    .home {
+        width: 100%;
+        min-height: 440px;
+        background: transparent;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home-text {
+        color: rgb(149, 141, 141);
+        text-align: center;
+    }
+
+    .home-title {
+        font-size: 3.5rem;
+    }
+
+    .home-subtitle {
+        font-size: 1.3rem;
+        font-weight: bolder;
+    }
+
+    /* ====Post filter========/ */
+    .post-filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 1.5rem;
+        margin-top: 2rem !important;
+
+    }
+
+    .filter-item {
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .active-filter {
+        background: var(--second-color);
+        color: var(--bg-color);
+        padding: 4px 10px;
+        border-radius: 4px;
+    }
+
+    /* ==Posts====== */
+    .post {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .post-box {
+        background: var(--bg-color);
+        box-shadow: 0 1px 2px black;
+        padding: 15px;
+        border-radius: 0.5rem;
+        transition: transform 0.3s ease-in-out;
+    }
+    .post-box:hover {
+        transform: scale(1.1);
+    }
+
+    
+    .post-box.design {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+        margin-bottom: 20px; /* Adjust spacing between post-box elements */
+    }
+
+    .post-box.design:hover {
+        transform: scale(1.1); /* Adjust the scale factor for zoom-out effect */
+    }
+
+    .post-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 0.5rem;
+    }
+
+    .category {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--second-color);
+    }
+    .category h2{
+        display: inline-block;
+        padding: 5px 10px;
+      
+        text-decoration: none; 
+        transition: color 0.3s ease-in-out; 
+    }
+    .category h2:hover {
+        background-color:blue; 
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .post-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--text-color);
+        /* ====To Remain Title In 2 Lines======= */
+        overflow: hidden;
+    }
+
+    .post-decription {
+        line-height: 1.3rem;
+        margin: 5px 0 10px;
+        overflow: hidden;
+        text-align: justify;
+        font-size: 13px;
+
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 0;
+    }
+
+    .footer p {
+        font-size: 0.938rem;
+    }
+
+    .social {
+        display: flex;
+        align-items: center;
+        column-gap: 1rem;
+    }
+
+    .social .bx {
+        font-size: 1.4rem;
+        color: var(--text-color);
+    }
+
+    .social .bx:hover {
+        color: var(--second-color);
+        transition: 0.3s all linear;
+    }
+
+    /* =====Past Content======== */
+    .post-header {
+        width: 100%;
+        height: 500px;
+        background: var(--container-color);
+    }
+
+    .post-container {
+        max-width: 800px;
+        margin: auto;
+        width: 100%;
+    }
+
+    .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4rem !important;
+    }
+
+    .back-home {
+        color: var(--second-color);
+        font-size: 0.9rem;
+    }
+
+    .header-title {
+        width: 90%;
+        font-size: 2.6rem;
+        color: var(--bg-color);
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .header-img {
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .post-content {
+        margin-top: 10rem !important;
+
+    }
+
+    .sub-heading {
+        font-size: 1.2rem;
+    }
+
+    .post-text {
+        font-size: 1rem;
+        line-height: 1.7rem;
+        margin: 1rem 0;
+        text-align: justify;
+    }
+
+    /* ===Share==== */
+    .share {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1rem;
+
+    }
+
+    .share-title {
+        font-size: 1.1rem;
+
+    }
+
+    /* =====Responsive===== */
+    @media (max-width:1060px) {
+        .container {
+            margin: 0 auto;
+            width: 95%;
+        }
+
+        .home-text {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .nav {
+            padding: 14px 0;
+        }
+
+        .post-container {
+            margin: 0 auto;
+            width: 95%;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .nav {
+            padding: 10px 0;
+        }
+
+        section {
+            padding: 2rem 0;
+        }
+
+        .header-content {
+            margin-top: 3rem !important;
+        }
+
+        .home {
+            min-height: 380px;
+        }
+
+        .home-title {
+            font-size: 3rem;
+        }
+
+        .header-title {
+            font-size: 2rem;
+        }
+
+        .header-img {
+            height: 370px;
+        }
+
+        .post-header {
+            height: 435px;
+        }
+
+        .post-content {
+            margin-top: 9rem !important;
+        }
+    }
+
+    @media (max-width: 570px) {
+        .post-header {
+            height: 490px;
+        }
+
+        .header-title {
+            width: 100%;
+        }
+
+        .header-img {
+            height: 340px;
+        }
+
+        .footer {
+            flex-direction: column;
+            row-gap: 1rem;
+            padding: 20px 0;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 396px) {
+        .home-title {
+            font-size: 2rem;
+        }
+
+        .home-subtitle {
+            font-size: 0.9rem;
+
+        }
+
+        .home {
+            min-height: 300px;
+        }
+
+        .post-box {
+            padding: 10px;
+        }
+
+        .header-title {
+            font-size: 1.4rem;
+        }
+
+        .header-img {
+            height: 240px;
+        }
+
+        .post-header {
+            height: 335px;
+        }
+
+        .post-content {
+            margin-top: 5rem !important;
+        }
+
+        .post-text {
+            font-size: 0.875rem;
+            line-height: 1.5rem;
+            margin: 10px 0;
+        }
+    }
+</style>
+
+<body>
+    <!-- ===============Header=====================-->
+    <header>
+        <!-- =============Nav============ -->
+        <div class="nav container">
+            <img src="https://i.ibb.co/091CdMm/download-removebg-preview.png" id="gfg" alt="">
+            <!-- =================Login Btn============ -->
+            <a href="{% url 'index' %}" class="login">home</a>
+        </div>
+    </header>
+
+    <!-- =========home============ -->
+    <section class="home" id="home">
+        <div class="home-text continer">
+            <img src="https://i.ibb.co/3NzhJDL/cartoon-3d-character-developer-designer-600nw-2212355381-removebg-preview.png"
+                style="width: 100%; height:330px" alt="">
+
+            <br>
+            <span class="home-subtitle">Your source of great content</span>
+        </div>
+    </section>
+
+    <!-- ======Post Filter========== -->
+    <div class="post-filter ">
+        <span class="filter-item active-filter" data-filter='all'>All</span>
+        <span class="filter-item" data-filter="mobile">Development</span>
+        <span class="filter-item" data-filter="design">Language</span>
+        <span class="filter-item" data-filter="tech">Framework</span>
+
+    </div>
+
+    <!-- =========Posts=========== -->
+    <section class="post container">
+        <!-- ========Post Box 1======== -->
+        <div class="post-box mobile ">
+            <img src="https://i.ibb.co/y06t1R6/op.png" alt="" class="post-img">
+            <h2 class="category">Development</h2>
+            <a href="https://www.geeksforgeeks.org/web-development/" target="_blank" class="post-title">
+                Web Developement Tutorial
+            </a>
+            <p class="post-decription">Web development refers to the creat-ing, building, and maintaining of websites.
+                It
+                includes aspects such as web design, web publishing, web-programming, and database manage-ment. </p>
+        </div>
+        <!-- ========Post Box 2======== -->
+        <div class="post-box mobile">
+            <img src="https://i.ibb.co/Pzmh7V9/HTML-tutorial.jpg" alt="" class="post-img">
+            <h2 class="category">Development</h2>
+            <a href="https://www.geeksforgeeks.org/html-tutorial/" target="_blank" class="post-title">
+                HTML Tutorial
+            </a>
+            <p class="post-decription">This HTML Tutorial is a Complete Guide for Beginners who want to learn HTML from
+                basics. Here, we cover everything from HTML fundamentals such as Basic HTML Tags and their Attributes,
+            </p>
+
+
+        </div>
+        <!-- ========Post Box 3======== -->
+        <div class="post-box mobile">
+            <img src="https://i.ibb.co/XzJwvGF/images.jpg" alt="CSS-Tutorial" alt="" class="post-img">
+            <h2 class="category">Development</h2>
+            <a href="https://www.geeksforgeeks.org/css-tutorial/" target="_blank" class="post-title">
+                CSS Tutorial
+            </a>
+            <p class="post-decription">This CSS Tutorial is designed for both beginners and experienced professionals.
+                Here, you will learn CSS from basic to advanced concepts, such as properties, selectors, functions,
+                media queries, and more. </p>
+            <!-- =========Profile========== -->
+
+        </div>
+
+    </section>
+    <section class="post container">
+        <!-- ========Post Box 4======== -->
+        <div class="post-box mobile">
+            <img src="https://i.ibb.co/4pzW9ts/javascript.webp" alt="" class="post-img">
+            <h2 class="category">Development</h2>
+            <a href="https://www.geeksforgeeks.org/javascript/" target="_blank" class="post-title">
+                JavaScript Tutorial
+            </a>
+            <p class="post-decription">This JavaScript Tutorial is designed to help both beginners and experienced
+                professionals master the fundamentals of JavaScript. This free tutorial covers all JavaScript concepts.
+            </p>
+
+
+        </div>
+        <!-- ========Post Box 5======== -->
+        <div class="post-box design">
+            <img src="https://i.ibb.co/rvRrvSc/download.jpg" alt="" class="post-img">
+            <h2 class="category">Language</h2>
+            <a href="https://www.geeksforgeeks.org/python-programming-language/" target="_blank" class="post-title">
+                Python Tutorial
+            </a>
+            <p class="post-decription">This Python Tutorial is very well suited for beginners and also for experienced
+                programmers with other programming languages like C++ and Java. </p>
+
+
+        </div>
+        <!-- ========Post Box 6======== -->
+        <div class="post-box design">
+            <img src="https://i.ibb.co/hV0n7SH/1-Jlfun-Jy-wuk4s-li-Twa0o-Q.png" alt="" class="post-img">
+            <h2 class="category">Language</h2>
+            <a href="https://www.geeksforgeeks.org/java/" target="_blank" class="post-title">
+                Java Tutorial
+            </a>
+            <p class="post-decription">This Java Tutorial is designed for beginners as well as experienced
+                professionals. Whether you’re looking to learn the basics of Java or its advanced concepts, this free
+                Java tutorial is the perfect resource for you.</p>
+
+        </div>
+
+    </section>
+    <section class="post container">
+        <!-- ========Post Box 7======== -->
+        <div class="post-box design">
+            <img src="https://i.ibb.co/w0DV32w/images-1.jpg" alt="" class="post-img">
+            <h2 class="category">Language</h2>
+            <a href="https://www.geeksforgeeks.org/c-plus-plus/" target="_blank" class="post-title">
+                C++ Tutorial
+            </a>
+            <p class="post-decription">C++ is the most used and most popular programming language developed by Bjarne
+                Stroustrup. C++ is a high-level and object-oriented programming language.</p>
+
+        </div>
+        </div>
+        <!-- ========Post Box 8======== -->
+        <div class="post-box tech">
+            <img src="https://i.ibb.co/9v6k9MY/images.png" alt="" target="_blank" class="post-img">
+            <h2 class="category">Framework</h2>
+            <a href="https://www.geeksforgeeks.org/django-tutorial/" class="post-title">
+                Django Tutorial
+            </a>
+            <p class="post-decription">Django is a Python-based web framework that allows you to quickly create
+                efficient web applications. It is also called batteries included framework because Django provides
+                built-in features for everything including Django Admin Interface, </p>
+
+
+        </div>
+        <!-- ========Post Box 9======== -->
+        <div class="post-box tech">
+            <img src="https://i.ibb.co/dtnfpLD/1-RDN058-L5g-Q02-Xy13-Oaxjn-Q.jpg" alt="" class="post-img">
+            <h2 class="category">Framework</h2>
+            <a href="https://www.geeksforgeeks.org/react-tutorial/" target="_blank" class="post-title">
+                React Tutorial
+            </a>
+            <p class="post-decription"> This free React tutorial is designed for people who prefer to learn by doing. So
+                if you are a beginner or advanced React developer, this tutorial will guide you through all the
+                fundamentals to build any React app.</p>
+
+
+        </div>
+
+    </section>
+
+    <!-- =========footer========= -->
+    <div class="footer container">
+        <p> &#169; <strong style="color: green;">GeeksforGeeks-2.0</strong> Right Reserved </p>
+        <div class="social">
+            <a href="https://www.facebook.com/geeksforgeeks.org/"><i class='bx bxl-facebook-circle'></i> </a>
+            <a href="https://twitter.com/geeksforgeeks"><i class='bx bxl-twitter'></i> </a>
+            <a href="https://www.instagram.com/geeks_for_geeks/"><i class='bx bxl-instagram-alt'></i> </a>
+            <a href="https://in.linkedin.com/company/geeksforgeeks"><i class='bx bxl-linkedin-square'></i> </a>
+
+        </div>
+    </div>
+
+    <!-- =============JQuery Link========== -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!-- =======================Link to Js=============== -->
+    <script>
+
+        // =======Filter js==============
+
+        $(document).ready(function () {
+            $('.filter-item').click(function () {
+                const value = $(this).attr("data-filter");
+                if (value == "all") {
+                    $(".post-box").show("1000");
+                } else {
+                    $(".post-box")
+                        .not("." + value)
+                        .hide("1000");
+                    $(".post-box")
+                        .filter("." + value)
+                        .show("1000");
+                }
+
+            });
+            // Add active to btn
+            $(".filter-item").click(function () {
+                $(this).addClass("active-filter").siblings().removeClass("active-filter");
+            });
+        });
+
+        var header = document.querySelector("header");
+
+        window.addEventListener("scroll", () => {
+            header.classList.toggle("shadow", window.scrollY > 0);
+        });
+
+    </script>
+
+    <!-- ========================= Chatbot ======================== -->
+    <script type="text/javascript">
+
+        (function (d, m) {
+            var kommunicateSettings =
+                { "appId": "3943966ff60990eb5d31300da5379cd", "popupWidget": true, "automaticChatOpenOnNavigation": true };
+            var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+            var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+            window.kommunicate = m; m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+
+    </script>
+
+
+</body>
+
+</html>

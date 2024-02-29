@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+    <title>GeeksforGeeks 2.0</title>
+
+    <!-- Add jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: rgb(226, 220, 220);
+    }
+    .calculator {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: white;
+        margin-top: -20px;
+    }
+ 
+    form {
+        margin-bottom: 20px;
+    }
+ 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+ 
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+ 
+    th {
+        background-color: #c9d7c9d7;
+        color: black;
+    }
+ 
+    #cgpa {
+        font-weight: bold;
+    }
+    .logo{
+        width: 130px;
+        margin-top: -30px;
+    }
+    .btn{
+        padding: 10px 10px;
+        color: green;
+        border: 1px solid green;
+        font-size: 13px;
+        background: transparent;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+        margin-left: 650px;
+    }
+    .btn:hover{
+        color: white;
+        background: green;
+        transition: all 400ms;
+    }
+</style>
+<body>
+    <!-- ==================== Result in PDF Format =================== -->
+   <a href="{% url 'index' %}"> <img src="https://i.ibb.co/Vwfcd6R/gpt-removebg-preview.png" class="logo" alt=""></a>
+    <div id="mn" class="calculator" >
+        <img style="width: 130px; height:130px; margin-left:230px" src="https://i.ibb.co/JkyXTWp/1696184885877pp.jpg" alt="">
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Grade</th>
+                    <th>Credit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subject in subjects %}
+                <tr>
+                    <td style="font-family: 'Times New Roman', Times, serif;">{{ subject.name }}</td>
+                    <td style="font-family: 'Times New Roman', Times, serif;">{{ subject.grade }}</td>
+                    <td style="font-family: 'Times New Roman', Times, serif;">{{ subject.credit }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h3 style="font-family: 'Times New Roman', Times, serif;">CGPA: <span id="cgpa">{{cgpa}}</span></h3>
+    </div>
+    <br>
+    <button onclick="myfun('mn')" type="button" class="btn">Generate Receipt</button>
+
+    <!-- ============= End Result =================== -->
+
+    <!-- =============== PDF Printing  JS Logic ================= -->
+    <script type="text/javascript">
+        function myfun(pa) {
+            let d = document.getElementById(pa).innerHTML;
+            document.body.innerHTML = d;
+            window.print();
+        }
+    </script>
+</body>
+</html>

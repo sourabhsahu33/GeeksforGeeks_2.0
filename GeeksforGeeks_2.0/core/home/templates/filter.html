@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+  <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+  <title>GeeksforGeeks 2.0</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css">
+  <script src="script.js" defer></script>
+</head>
+<style>
+  /* Import Google font - Poppins */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+  * {
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background: #f1f1f1 !important;
+  }
+
+  body .container {
+    max-width: 1100px;
+  }
+
+  #filter-buttons button {
+    border-radius: 3px;
+    background: #fff;
+    margin-top: -80px;
+    border-color: transparent;
+  }
+
+  .card {
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.card:hover {
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); 
+}
+
+  #filter-buttons button:hover {
+    background-color: green;
+  }
+
+  #filter-buttons button.active {
+    color: #fff;
+    background: #6c757d;
+  }
+
+  #filterable-cards .card {
+    width: 15rem;
+    border: 2px solid transparent;
+    transition: transform 0.3s ease-in-out;
+  }
+  #filterable-cards .card : hover {
+    transform: scale(1.1); 
+}
+
+  #filterable-cards .card.hide {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    #filterable-cards {
+      justify-content: center;
+    }
+
+    #filterable-cards .card {
+      width: calc(100% / 2 - 10px);
+    }
+  }
+
+  .logo {
+    width: 150px;
+    margin-left: -140px;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <a href="{% url 'index' %}"><img src="https://i.ibb.co/bHNN58T/gfg-removebg-preview.png" class="logo" alt=""></a>
+
+    <!-- ================ Images Filter Buttons Section =====================-->
+    <div class="row mt-5" id="filter-buttons">
+      <div class="col-12">
+        <button class="btn mb-2 me-1 active" data-filter="all">Show all</button>
+        <button class="btn mb-2 mx-1" data-filter="past">Past</button>
+        <button class="btn mb-2 mx-1" data-filter="present">Present</button>
+        <button class="btn mb-2 mx-1" data-filter="future">Future</button>
+      </div>
+    </div>
+
+
+    <!--============== Filterable Images / Cards Section =======================-->
+    <div class="row px-2 mt-4 gap-3" id="filterable-cards">
+      <div class="card p-0" data-name="past">
+        <img src="https://i.ibb.co/YPybkYK/ooooo.jpg" alt="img">
+        <div class="card-body">
+          <h6 class="card-title"> <a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">EdTech</a> </h6>
+          <p class="card-text">5 January 2024</p>
+        </div>
+      </div>
+      <div class="card p-0" data-name="past">
+        <img src="https://i.ibb.co/xL5FW16/oooll.jpg" alt="img">
+        <div class="card-body">
+          <h6 class="card-title"> <a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">Coding Hack</a></h6>
+          <p class="card-text">15 January 2024</p>
+        </div>
+      </div>
+      <div class="card p-0" data-name="past">
+        <img src="https://i.ibb.co/jLWdZTb/ilp.jpg" alt="img">
+        <div class="card-body">
+          <h6 class="card-title"><a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">Health Tech</a></h6>
+          <p class="card-text">20 January 2024</p>
+        </div>
+      </div>
+      <div class="card p-0" data-name="present">
+        <img src="https://i.ibb.co/JQfM887/iuytr.jpg" alt="img">
+        <div class="card-body">
+          <br>
+          <h6 class="card-title"><a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">Tourism Tech</a></h6>
+          <p class="card-text">5 Feb 2024</p>
+        </div>
+      </div>
+      <div class="card p-0" data-name="present">
+        <img src="https://i.ibb.co/HF3VZLh/images.png" alt="img">
+        <div class="card-body">
+          <br><br>
+          <h6 class="card-title"><a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">Code Tech</a></h6>
+          <p class="card-text">14 Feb 2024</p>
+        </div>
+      </div>
+      <div class="card p-0" data-name="present">
+        <img src="https://i.ibb.co/SPc9tsb/ooii.jpg" alt="">
+        <div class="card-body">
+          <br>
+          <h6 class="card-title"><a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">Hack World</a></h6>
+          <p class="card-text">20 Feb 2024</p>
+        </div>
+      </div>
+      <div class="card p-0" data-name="future">
+        <img src="https://i.ibb.co/1JQbRV7/oopsndjnfk.webp" alt="img">
+        <div class="card-body">
+          <h6 class="card-title"><a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">Dev Tech</a></h6>
+          <p class="card-text">10 March 2024</p>
+        </div>
+      </div>
+      <div class="card p-0" data-name="future">
+        <img src="https://i.ibb.co/1ZwDV30/fina.jpg" alt="img">
+        <div class="card-body">
+          <br>
+          <h6 class="card-title"><a href="https://www.geeksforgeeks.org/events"
+              style="color: black; text-decoration: none">IPL Tech</a></h6>
+          <p class="card-text">20 March</p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
+
+  <!-- ====================== JS Logic ================= -->
+  <script>
+
+    // Select relevant HTML elements
+    const filterButtons = document.querySelectorAll("#filter-buttons button");
+    const filterableCards = document.querySelectorAll("#filterable-cards .card");
+
+    // Function to filter cards based on filter buttons
+    const filterCards = (e) => {
+      document.querySelector("#filter-buttons .active").classList.remove("active");
+      e.target.classList.add("active");
+
+      filterableCards.forEach(card => {
+        // show the card if it matches the clicked filter or show all cards if "all" filter is clicked
+        if (card.dataset.name === e.target.dataset.filter || e.target.dataset.filter === "all") {
+          return card.classList.replace("hide", "show");
+        }
+        card.classList.add("hide");
+      });
+    }
+
+    filterButtons.forEach(button => button.addEventListener("click", filterCards));
+  </script>
+
+</body>
+
+</html>

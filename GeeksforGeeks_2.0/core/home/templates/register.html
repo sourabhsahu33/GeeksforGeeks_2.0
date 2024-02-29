@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+    <title>GeeksforGeeks 2.0</title>
+
+    <!-------------- Font Awesome Icons --------------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!----------------- CSS stylesheet ---------------------->
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --linear-grad: linear-gradient(to right, rgb(34, 206, 34), rgb(6, 44, 6));
+        --grad-clr1: rgb(11, 27, 11);
+        --grad-clr2: rgb(4, 43, 4);
+    }
+
+    body {
+        height: 100vh;
+        background: rgb(228, 218, 218);
+        display: grid;
+        place-content: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        position: relative;
+        width: 850px;
+        height: 500px;
+        background-color: #fff;
+        box-shadow: 25px 30px 55px #5557;
+        border-radius: 13px;
+        overflow: hidden;
+    }
+
+    .form-container {
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        padding: 0px 40px;
+        transition: all 0.6s ease-in-out;
+    }
+
+    .sign-up-container {
+        z-index: 1;
+    }
+
+    .sign-in-container {
+        z-index: 2;
+    }
+
+    form {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 50px;
+    }
+
+    h1 {
+        color: var(--grad-clr1);
+    }
+
+    .social-container {
+        margin: 20px 0px;
+    }
+
+    .social-container a {
+        border: 1px solid #DDD;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px 5px;
+        height: 40px;
+        width: 40px;
+    }
+
+    span {
+        font-size: 12px;
+    }
+
+    .infield {
+        position: relative;
+        margin: 8px 0px;
+        width: 100%;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px 8px;
+        background-color: #f3f3f3;
+        border: none;
+        outline: none;
+    }
+
+    label {
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 2px;
+        background-color: var(--linear-grad);
+        transition: 0.3ms;
+    }
+
+    input:focus~label {
+        width: 100%;
+        background-color: #141E30;
+    }
+
+    a {
+        color: #333;
+        font-size: 14px;
+        text-decoration: none;
+        margin: 15px 0px;
+    }
+
+    button {
+        border-radius: 20px;
+        border: 1px solid var(--grad-clr1);
+        background: var(--grad-clr2);
+        color: #fff;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 12px 45px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .form-container button {
+        margin-top: 17px;
+        transition: 80ms ease-in;
+    }
+
+    .form-container button:hover {
+        background: #fff;
+        color: var(--grad-clr1);
+    }
+
+    .overlay-container {
+        position: absolute;
+        top: 0;
+        left: 60%;
+        width: 40%;
+        height: 100%;
+        overflow: hidden;
+        transition: transform 0.6s ease-in-out;
+        z-index: 9;
+    }
+
+    #overlayBtn {
+        cursor: pointer;
+        position: absolute;
+        border: none;
+        left: 50%;
+        top: 304px;
+        transform: translateX(-50%);
+        width: 143.67px;
+        height: 40px;
+        background: transparent;
+        border-radius: 20px;
+    }
+
+    .overlay {
+        position: relative;
+        background: var(--linear-grad);
+        color: #fff;
+        left: -150%;
+        height: 100%;
+        width: 250%;
+        transition: transform 0.6s ease-in-out;
+    }
+
+    .overlay-panel {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0px 40px;
+        text-align: center;
+        height: 100%;
+        width: 340px;
+        transition: 0.6s ease-in-out;
+    }
+
+
+    .overlay-right {
+        right: 0;
+        transform: translateX(0%);
+    }
+
+    .overlay-panel h1 {
+        color: #fff;
+    }
+
+    p {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 20px;
+        letter-spacing: 0.5px;
+        margin: 25px 0px 35px;
+    }
+
+    .overlay-panel button {
+        border: none;
+        background-color: transparent;
+    }
+
+
+    @keyframes show {
+
+        0%,
+        50% {
+            opacity: 0;
+            z-index: 1;
+        }
+
+        50.1%,
+        100% {
+            opacity: 1;
+            z-index: 5;
+        }
+
+    }
+
+    .btnScaled {
+        animation: scalBtn 0.6s;
+    }
+
+    @keyframes scalBtn {
+        0% {
+            width: 143.67px;
+        }
+
+        50% {
+            width: 250px;
+        }
+
+        100% {
+            width: 143.67px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .container {
+            width: 90%;
+            height: auto;
+            max-width: 400px;
+        }
+
+        .overlay-container {
+            width: 100%;
+            left: 0;
+        }
+
+        .form-container {
+            width: 100%;
+            padding: 0 20px;
+        }
+
+        .overlay {
+            width: 100%;
+        }
+
+        .overlay-panel {
+            width: 100%;
+        }
+
+        #overlayBtn {
+            width: 100%;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .container {
+            width: 90%;
+            height: auto;
+            max-width: 300px;
+        }
+
+        .overlay-panel {
+            width: 90%;
+        }
+    }
+
+    .alert {
+        color: red;
+        margin-left: 120px;
+    }
+
+    .logo {
+        margin-top: -100%;
+        margin-left: -300px;
+        width: 150px;
+    }
+</style>
+
+<body>
+    <!-- =========================== Logo ========================= -->
+    <a href="{% url 'index' %}">
+        <img src="https://i.ibb.co/091CdMm/download-removebg-preview.png" alt="" class="logo">
+    </a>
+
+    <!-- ===================== Registeration Page ================================ -->
+
+    <div class="container" id="container">
+
+        <div class="form-container sign-up-container">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="{{ message.tags }}" role="alert" id="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <form id="signupForm" action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="infield">
+                    <input type="text" name="username" id="signupName" placeholder="Username" required />
+                    <label></label>
+                </div>
+                <div class="infield">
+                    <input type="password" name="password" id="signupPassword" placeholder="Password" required />
+                    <label></label>
+                </div>
+                <a href="{% url 'login' %}" class="forgot">Already have an account?</a>
+                <button>Sign Up</button>
+            </form>
+
+
+        </div>
+        <div class="overlay-container" id="overlayCon">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+
+                    <h1>GeeksforGeeks</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                </div>
+            </div>
+            <button id="overlayBtn"></button>
+        </div>
+    </div>
+    <!-- ========================= End Registration Page ==================== -->
+
+</body>
+
+</html>

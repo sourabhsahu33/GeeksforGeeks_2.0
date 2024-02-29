@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+    <title>GeeksforGeeks 2.0</title>
+    <style>
+        /* ================== Styling For Resume Template =================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            color: #006400;
+            /* Dark Green */
+            margin-bottom: 5px;
+        }
+
+        .header h3 {
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .left {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .left p,
+        .left ul li {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h2 {
+            padding: 5px;
+            color: #584d4d;
+            margin: 20px 0;
+            font-size: 24px;
+            border-bottom: 2px solid #006400;
+        }
+
+        .right {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .right h3 {
+            margin-bottom: 10px;
+            color: #006400;
+        }
+
+        .btn1 {
+            margin: 20px auto;
+            padding: 15px 25px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: #006400;
+            border: none;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- =========================== Heading =================== -->
+    <h1 style="text-align: center; color: #006400; font-size: 40px; margin-bottom: 20px;">GeeksforGeeks</h1>
+
+    <!-- ===================== Start Resume Template ======================= -->
+    <div id="mn" class="container">
+        <div class="header">
+            <h1>{{name}}</h1>
+            <h3>{{about}}</h3>
+        </div>
+
+        <div class="main">
+            <div class="left">
+
+                <!-- ================== Personal Information ================== -->
+                <h2>Personal Information</h2>
+                <p><strong>Name:</strong> {{name}}</p>
+                <p><strong>Age:</strong> {{age}}</p>
+                <p><strong>Email:</strong> {{email}}</p>
+                <p><strong>Phone:</strong> +91-{{phone}}</p>
+
+                <!-- ================ Skills ================== -->
+                <h2>Skills</h2>
+                <ul>
+                    <li>{{skill1}}</li>
+                    <li>{{skill2}}</li>
+                    <li>{{skill3}}</li>
+                    <li>{{skill4}}</li>
+                    <li>{{skill5}}</li>
+                </ul>
+
+                <!-- ====================== Education ================= -->
+                <h2>Education</h2>
+                <h3>{{degree1}}</h3>
+                <p>{{college1}}</p>
+                <p>{{year1}}</p>
+                <br>
+                <h3>{{degree2}}</h3>
+                <p>{{college2}}</p>
+                <p>Year: {{year2}}</p>
+                <h3>{{degree3}}</h3>
+                <p>{{college3}}</p>
+                <p>Year: {{year3}}</p>
+
+                <!-- ==================== Language ====================== -->
+                <h2>Languages</h2>
+                <ul>
+                    <li>{{lang1}}</li>
+                    <li>{{lang2}}</li>
+                    <li>{{lang3}}</li>
+                </ul>
+            </div>
+
+            <!-- ===================== Projects ======================= -->
+            <div class="right">
+                <h2>Projects</h2>
+                <h3>{{project1}}</h3>
+                <p><strong>Duration:</strong> {{durat1}}</p>
+                <ul>
+                    <li>{{desc1}}</li>
+                </ul>
+                <br>
+                <h3>{{project2}}</h3>
+                <p><strong>Duration:</strong> {{durat2}}</p>
+                <ul>
+                    <li>{{desc2}}</li>
+                </ul>
+
+                <!-- ================== Experience ===================== -->
+                <h2>Work Experience</h2>
+                <h3>{{company1}}</h3>
+                <p><strong>Position:</strong> {{post1}}</p>
+                <p><strong>Duration:</strong> {{duration1}}</p>
+                <ul>
+                    <li>{{lin11}}</li>
+                </ul>
+                <br><br>
+                <h3>{{company2}}</h3>
+                <p><strong>Position:</strong> {{post2}}</p>
+                <p><strong>Duration:</strong> {{duration2}}</p>
+                <ul>
+                    <li>{{lin21}}</li>
+                </ul>
+
+                <!-- ================= Achievement =================== -->
+                <h2>Achievements</h2>
+                <ul>
+                    <li>{{ach1}}</li>
+                    <li>{{ach2}}</li>
+                    <li>{{ach3}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================== End Resume Template ==================== -->
+
+    <!-- ======================= Generate Resume Button ============================= -->
+    <button onclick="myfun('mn')" type="button" class="btn1">Download PDF</button>
+
+
+    <!-- /================== PDF JS Logic ========================= -->
+    <script type="text/javascript">
+        function myfun(pa) {
+            let d = document.getElementById(pa).innerHTML;
+            document.body.innerHTML = d;
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

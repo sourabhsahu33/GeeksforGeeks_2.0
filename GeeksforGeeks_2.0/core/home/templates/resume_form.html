@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+     <title>GeeksforGeeks 2.0</title>
+
+<head>
+    <style>
+        /* =================== Style For Resume Form ===================== */
+        body {
+            font-family: Arial, sans-serif;
+            background: rgb(241, 227, 227);
+        }
+
+        .form-container {
+            width: 40%;
+            margin: 0 auto;
+            padding: 13px 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 80px;
+        }
+
+        .om,
+        .ed,
+        .com,
+        .op {
+            width: 100%;
+            padding: 8px 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .com {
+            width: 70%;
+            padding: 5px 15px;
+            display: flex;
+            gap: 5%;
+        }
+
+        .btn1 {
+            margin-left: 35%;
+            padding: 12px 15px;
+            font-size: 15px;
+            font-weight: bold;
+            color: green;
+            background-color: transparent;
+            border-radius: 5px;
+            border: 1px solid green;
+            transition: all 400ms;
+        }
+        .btn1:hover{
+            background-color: green;
+            color: white;
+
+        }
+        img{
+            width: 150px;
+            margin-left: 650px;
+       
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ========================== Logo ========================= -->
+    <a href="{% url 'index' %}">
+        <img src="https://i.ibb.co/091CdMm/download-removebg-preview.png" alt="">
+    </a>
+
+    <!-- ================ Start Resume Form ======================= -->
+
+    <form action="{% url 'resume' %}" method="post">
+        {% csrf_token %}
+
+
+        <!-- ================  Personal information ===================== -->
+        <div class="container">
+            <div class="form-container">
+                <h2 style="font-family: 'Times New Roman', Times, serif;">Fill Below Details</h2>
+
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Enter Your Full Name" name="name">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Title" name="about">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="age" placeholder="Enter Your Age" name="age">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="email" placeholder="Enter Your Email-ID" name="email">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="phone" placeholder="Enter Your Phone Number" name="phone">
+                </div>
+
+                <!-- =============== Skills Section =================== -->
+
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <div class="om">
+                        <input type="text" id="skills" placeholder="Skill1" name="skill1">
+                        <input type="text" id="skills" placeholder="Skill2" name="skill2">
+                        <input type="text" id="skills" placeholder="Skill3" name="skill3">
+                        <input type="text" id="skills" placeholder="Skill4" name="skill4">
+                        <input type="text" id="skills" placeholder="Skill5" name="skill5">
+                    </div>
+                </div>
+
+                <!-- =================== Education Section ======================== -->
+                <div class="form-group">
+                    <label for="education1">Education 1</label>
+                </div>
+                <div class="ed">
+                    <div class="form-group">
+                        <input type="text" id="degree1" placeholder="Qualification" name="degree1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="college1" placeholder="College " name="college1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="year1" placeholder="Passing Year" name="year1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="education1">Education 2</label>
+                </div>
+                <div class="ed">
+                    <div class="form-group">
+                        <input type="text" id="degree1" placeholder="Qualification" name="degree2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="college1" placeholder="College" name="college2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="year1" placeholder="Passing Year" name="year2">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="education1">Education 3</label>
+                </div>
+                <div class="ed">
+                    <div class="form-group">
+                        <input type="text" id="degree1" placeholder="Qualification" name="degree3">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="college1" placeholder="College" name="college3">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="year1" placeholder="Passing Year" name="year3">
+                    </div>
+                </div>
+
+                <!-- ====================== Language Section ================== -->
+                <div class="form-group">
+                    <label for="skills">Languages</label>
+                    <div class="om">
+                        <input type="text" id="skills" placeholder="language1" name="lang1">
+                        <input type="text" id="skills" placeholder="language2" name="lang2">
+                        <input type="text" id="skills" placeholder="language3" name="lang3">
+                    </div>
+                </div>
+
+                <!-- =================== Project Section ========================== -->
+                <div class="form-group">
+                    <label for="experience1">Project 1</label>
+                </div>
+                <div class="com">
+                    <div class="form-group">
+                        <input type="text" id="company1" placeholder="Project Title" name="project1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="post1" placeholder="Project Duration" name="durat1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="duration1" placeholder="Project Description" name="desc1">
+                </div>
+
+                <div class="form-group">
+                    <label for="experience1">Project 2</label>
+                </div>
+                <div class="com">
+                    <div class="form-group">
+                        <input type="text" id="company1" placeholder="Project Title" name="project2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="post1" placeholder="Project Duration" name="durat2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="duration1" placeholder="Project Description" name="desc2">
+                </div>
+
+                <!-- =================== Experience Section ====================== -->
+
+                <div class="form-group">
+                    <label for="experience1">Experience 1</label>
+                </div>
+                <div class="com">
+                    <div class="form-group">
+                        <input type="text" id="company1" placeholder="Company Name" name="company1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="post1" placeholder="Desigination" name="post1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="duration1" placeholder="Duration" name="duration1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="op">
+                        <input type="text" id="duration1" placeholder="Description" name="lin11">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="experience1">Experience 2</label>
+                </div>
+                <div class="com">
+                    <div class="form-group">
+                        <input type="text" id="company1" placeholder="Company Name" name="company2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="post1" placeholder="Desigination" name="post2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="duration1" placeholder="Duration" name="duration2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="duration1" placeholder="Description" name="lin21">
+                </div>
+
+
+                <!-- ======================= Achievements Section ============================ -->
+                <div class="form-group">
+                    <label for="experience1">Achievement </label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="company1" placeholder="First Achievement" name="ach1">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="post1" placeholder="Second Achievement" name="ach2">
+                </div>
+                <div class="form-group">
+                    <input type="text" id="duration1" placeholder="Third Achievement" name="ach3">
+                </div>
+                <button type="submit" class="btn1">Submit</button>
+            </div>
+        </div>
+    </form>
+    <!-- ========================= End Resume Form =========================== -->
+    
+</body>
+
+</html>

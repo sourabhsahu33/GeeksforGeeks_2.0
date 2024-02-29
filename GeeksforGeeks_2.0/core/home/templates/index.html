@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+    <title>GeeksforGeeks 2.0</title>
+
+    <!------------Iconscout CDN--------------------->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- --------------Google Fonts--------------------- -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- ----------------Swiper JS------------------------------ -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        text-decoration: none;
+        list-style-type: none;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --color-primary: rgb(214, 205, 205);
+        --color-success: #00bf8e;
+        --color-warning: #f7c94b;
+        --color-danger: rgb(19, 102, 19);
+        --color-danger-varient: rgba(247, 88, 66, 0.4);
+        --color-white: black;
+        --color-light: rgba(30, 14, 14, 0.7);
+        --color-black: #000;
+        --color-bg: white;
+        --color-bg1: rgb(241, 227, 227);
+        --color-bg2: white;
+        --container-width-lg: 76%;
+        --container-width-md: 90%;
+        --container-width-sm: 94%;
+        --transition: all 400ms ease;
+    }
+
+    body {
+        font-family: "Montserrat", sans-serif;
+        line-height: 1.7;
+        color: var(--color-white);
+        background-color: var(--color-bg);
+    }
+
+    .container {
+        width: var(--container-width-lg);
+        margin: 0 auto;
+    }
+
+    section {
+        padding: 6rem 0;
+    }
+
+    section h2 {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.3rem;
+    }
+
+    a {
+        color: var(--color-white);
+    }
+
+    img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+
+    }
+
+    .btn {
+        display: inline-block;
+        background: white;
+        color: green;
+        padding: 0.7rem 2rem;
+        border: 1px solid green;
+        font-weight: 500;
+        border-radius: 10px;
+        transition: var(--transition);
+    }
+
+    .btn:hover {
+        background: green;
+        color: white;
+        border-color: green;
+    }
+
+    .btn-primary {
+        background: transparent;
+        color: green;
+    }
+
+    /* ===================Navbar==================== */
+    nav {
+        background: transparent;
+        width: 100vw;
+        height: 5rem;
+        position: fixed;
+        top: 0;
+        z-index: 11;
+    }
+
+    /* change navbar styles on scroll */
+
+    .window-scroll {
+        background: var(--color-primary);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+
+    }
+
+    .nav__container {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    nav button {
+        display: none;
+    }
+
+    .nav__menu {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .nav__menu a {
+        font-size: 1rem;
+        font-weight: bold;
+        transition: var(--transition);
+    }
+
+    .nav__menu a:hover {
+        color: green;
+
+    }
+
+    /* ==================Header================ */
+    header {
+        position: relative;
+        top: 5rem;
+        overflow: hidden;
+        height: 70vh;
+        margin-bottom: 5rem;
+    }
+
+    header h1 {
+        color: rgb(63, 60, 60);
+    }
+
+
+    .header__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 5rem;
+        height: 100%;
+    }
+
+    .header__left p {
+        margin: 1rem 0 2.4rem;
+    }
+
+    .header__left h1 {
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0;
+        border-right: 2px solid #333; /* Adjust border style and color as needed */
+        letter-spacing: 4px; /* Adjust letter spacing as needed */
+        animation: typing-h1 3s steps(30, end), blink-caret 0.5s step-end infinite;
+    }
+    @keyframes typing-h1 {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    @keyframes blink-caret {
+        from, to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: #333; /* Adjust border color as needed */
+        }
+    }
+
+    /* ================Categories======= */
+    .categories {
+        background: var(--color-bg1);
+        height: 32rem;
+    }
+
+    .categories h1 {
+        line-height: 1;
+        margin-bottom: 3rem;
+        color: rgb(93, 87, 87);
+    }
+
+    .categories__container {
+        display: grid;
+        grid-template-columns: 40% 60%;
+    }
+
+    .categories__left {
+        margin-right: 4rem;
+
+    }
+
+    .categories__left p {
+        margin: 1rem 0 3rem;
+    }
+
+    .categories__right {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.2rem;
+    }
+
+    .category {
+        background: var(--color-bg2);
+        padding: 2rem;
+        border-radius: 2rem;
+        transition: var(--transition);
+        border: 0.5px solid gray;
+    }
+
+    .category:hover {
+        box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+
+    .category:nth-child(2) .category__icon {
+        background: var(--color-danger);
+    }
+
+    .category:nth-child(3) .category__icon {
+        background: var(--color-success);
+    }
+
+    .category:nth-child(4) .category__icon {
+        background: var(--color-warning);
+    }
+
+    .category:nth-child(5) .category__icon {
+        background: var(--color-success);
+    }
+
+    .category:nth-child(6) .category__icon {
+        background: var(--color-bg1);
+    }
+
+    .category__icon {
+        background: var(--color-primary);
+        padding: 0.7rem;
+        border-radius: 0.9rem;
+    }
+
+    .category h5 {
+        margin: 2rem 0 1rem;
+    }
+
+    .category p {
+        font-size: 0.85rem;
+    }
+
+    /* =============Courses============== */
+    .courses {
+        margin-top: 10rem;
+    }
+    .course h2 {
+        overflow: hidden;
+        white-space: nowrap;
+        margin: 0;
+        color: gray;
+        border-right: 2px solid #333; 
+        letter-spacing: 4px; 
+        animation: typing-h2 6s steps(30, end), blink-caret 0.5s step-end infinite;
+    }
+
+    @keyframes typing-h2 {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+
+    .courses__container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .course {
+        background: var(--color-bg1);
+        box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.4);
+        text-align: center;
+        border: 1px solid transparent;
+       
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .course:hover {
+        background: transparent;
+        border-color: var(--color-primary);
+        transform: scale(1.1);
+    }
+
+    .course__info {
+        padding: 2rem;
+    }
+
+    .course__info p {
+        margin: 1.2rem 0 2rem;
+        font-size: 0.9rem;
+
+    }
+
+    /* ===============FAQ================= */
+    .faqs {
+        background: var(--color-bg1);
+        box-shadow: insert 0 0 3rem rgba(0, 0, 0, 0.5);
+    }
+
+    .faqs__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .faq {
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.0rem;
+        height: fit-content;
+        background: rgb(251, 250, 250);
+        cursor: pointer;
+    }
+
+    .faq h4 {
+        font-size: 1rem;
+        line-height: 2.2;
+    }
+
+    .faq__icon {
+        align-self: flex-start;
+        font-size: 1.2rem;
+    }
+
+    .faq p {
+        margin-top: 0.8rem;
+        display: none;
+    }
+
+    .faq.open p {
+        display: block;
+    }
+
+    /* ===================Testimonial================ */
+    .testimonials__container {
+        overflow-x: hidden;
+        position: relative;
+        margin-bottom: 5rem;
+    }
+
+    .testimonial {
+        padding-top: 2rem;
+    }
+
+    .avatar {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 0.5rem;
+        border: 1rem solid var(--color-bg);
+    }
+
+    .testimonial__info {
+        text-align: center;
+    }
+
+    .testimonial__body {
+        background: var(--color-primary);
+        padding: 1.5rem;
+        margin-top: 3rem;
+        position: relative;
+    }
+
+    .testimonial__body::before {
+        content: '';
+        display: block;
+        background: linear-gradient(135deg, transparent, var(--color-primary), var(--color-primary), var(--color-primary));
+        width: 3rem;
+        height: 3rem;
+        left: 50%;
+        top: -1.5rem;
+        position: absolute;
+        transform: rotate(45deg);
+    }
+
+    /* ==========================Footer================== */
+    footer {
+        background: var(--color-bg1);
+        padding: 5rem;
+        font-size: 0.9rem;
+    }
+
+    .footer__container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5rem;
+    }
+
+    .footer__container>div h4 {
+        margin-bottom: 1.2rem;
+    }
+
+    .footer__1 p {
+        margin: 0 0 2rem;
+    }
+
+    footer ul li {
+        margin-bottom: 0.7rem;
+    }
+
+    footer ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .footer__socials {
+        display: flex;
+        gap: 1rem;
+        font-size: 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .footer__copyright {
+        text-align: center;
+        margin-top: 4rem;
+        padding: 1.2rem 0;
+        border-top: 1px solid var(--color-bg2);
+    }
+
+
+    /* ===========================Move Icon ============================ */
+
+    .header__right-image img {
+        /* Set initial position */
+        position: relative;
+        animation: moveUpDown 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes moveUpDown {
+        0% {
+            transform: translateY(0);
+            /* Start position */
+        }
+
+        100% {
+            transform: translateY(20px);
+            /* End position - adjust as needed */
+        }
+    }
+
+    /* ======================Move FAQ Feature===================== */
+
+    .faq:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .faq {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+
+
+    /* ==================Media Queries (Tablets)=================== */
+
+    @media screen and (max-width: 1024px) {
+        .container {
+            width: var(--container-width-md);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            font-size: 1.7rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        h4 {
+            font-size: 1.2rem;
+        }
+
+        /* =================Navbar==================== */
+        nav button {
+            display: inline-block;
+            background: transparent;
+            font-size: 1.8rem;
+            color: var(--color-white);
+            cursor: pointer;
+        }
+
+        nav button#close-menu-btn {
+            display: none;
+        }
+
+        .nav__menu {
+            position: fixed;
+            top: 5rem;
+            right: 5%;
+            height: fit-content;
+            width: 18rem;
+            flex-direction: column;
+            gap: 0;
+            display: none;
+        }
+
+        .nav__menu li {
+            width: 100%;
+            height: 5.8rem;
+            animation: animateNavItems 400ms linear forwards;
+            transform-origin: top right;
+            opacity: 0;
+        }
+
+        .nav__menu li:nth-child(2) {
+            animation-delay: 200ms;
+        }
+
+        .nav__menu li:nth-child(3) {
+            animation-delay: 400ms;
+        }
+
+        .nav__menu li:nth-child(4) {
+            animation-delay: 600ms;
+        }
+
+        @keyframes animateNavItems {
+            0% {
+                transform: rotateZ(-90deg);
+            }
+
+            100% {
+                transform: rotateZ(0);
+                opacity: 1;
+            }
+        }
+
+        .nav__menu li a {
+            background: var(--color-primary);
+            box-shadow: -4rem 6rem 10rem rgba(0, 0, 0, 0.6);
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+
+        .nav__menu li a:hover {
+            background: var(--color-bg2);
+            color: var(--color-white);
+        }
+
+        /* ==============Header=============== */
+        header {
+            height: 52vh;
+            margin-bottom: 4rem;
+        }
+
+        .header__container {
+            gap: 0;
+            padding-bottom: 3rem;
+        }
+
+        /* ==========================Categories================== */
+        .categories {
+            height: auto;
+        }
+
+        .categories__container {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .categories__left {
+            margin-right: 0;
+        }
+
+        /* ===========================Course=============== */
+        .courses {
+            margin-top: 0;
+        }
+
+        .courses__container {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        /* =====================FAQs======================== */
+        .faqs__container {
+            grid-template-columns: 1fr;
+        }
+
+        .faq {
+            padding: 1.5rem;
+        }
+
+        /* =================Footer=================== */
+        .footer__container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    /* ==================Media Query (Phone)================ */
+    @media screen and (max-width:600px) {
+        .container {
+            width: var(--container-width-sm);
+        }
+
+        /* ===============Navbar================= */
+        .nav__menu {
+            right: 3%;
+        }
+
+        /* =======================Header=============== */
+        header {
+            height: 100vh;
+        }
+
+        .header__container {
+            grid-template-columns: 1fr;
+            text-align: center;
+            margin-top: 0rem;
+        }
+
+        .header__left p {
+            margin-bottom: 1.3rem;
+        }
+
+        /* =================Category================= */
+        .categories__right {
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem;
+        }
+
+        .category {
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        .category__icon {
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        /* =================Courses==================/ */
+        .courses__container {
+            grid-template-columns: 1fr;
+        }
+
+        /* =======================Testimonial=========== */
+        .testimonial__body {
+            padding: 1.2rem;
+        }
+
+        /* ==============Footer================= */
+        .footer__container {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 2rem;
+        }
+
+        .footer__1 p {
+            margin: 1rem auto;
+        }
+
+        .footer__socials {
+            justify-content: center;
+        }
+
+    }
+
+    .nav__container img {
+        width: 50%;
+
+    }
+
+    #login:hover {
+        color: white;
+    }
+
+    .footer__container img {
+        width: 170px;
+        margin-top: -2rem;
+    }
+
+    #logout {
+        color: green;
+        background-color: transparent;
+    }
+
+    #logout:hover {
+        color: white;
+        background-color: green;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="container nav__container">
+            <a href="{% url 'index' %}">
+                <img src="https://i.ibb.co/091CdMm/download-removebg-preview.png" alt="">
+            </a>
+            <ul class="nav__menu">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'courses' %}">Courses</a></li>
+                <li><a href="{% url 'alarm' %}">Alarm</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li>
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="btn btn-primary" id="logout">Logout</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary" id="login">Login/Register</a>
+                    {% endif %}
+                </li>
+            </ul>
+            <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
+            <button id="close-menu-btn"><i class="uil uil-multiply"></i></button>
+        </div>
+    </nav>
+    <!-- ======================End Navbar================== -->
+
+    <!-- ====================Header========================== -->
+    <header>
+        <div class="container header__container">
+            <div class="header__left">
+                <h1>Start Your Coding <br> Journay with <br>GeeksforGeeks 2.0</h1>
+                <p style="text-align: justify;">Welcome to GeeksforGeeks 2.0, an updated version of GeeksforGeeks. This
+                    version has new features and
+                    an updated learning path to help you achieve your goals.
+
+                </p>
+                <a href="{% url 'courses' %}" class="btn btn-primary">Let's Start</a>
+
+            </div>
+            <div class="header__right">
+                <div class="header__right-image">
+                    <img src="https://i.ibb.co/P6snkvr/io-removebg-preview.png" alt="">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================End Header========================= -->
+
+    <!-- ==============Start Category=================== -->
+
+    <section class="categories">
+        <div class="container container categories__container">
+            <div class="categories__left">
+                <h1>New Categories</h1>
+                <p style="text-align: justify;">There are some new categories or areas in which GeeksforGeeks 2.0
+                    explores for our Geeks, and correct
+                    and high-quality content is the point that makes GeeksforGeeks 2.0 different from others.
+                </p>
+                <a href="{% url 'blog' %}" class="btn"> Learn More</a>
+            </div>
+            <div class="categories__right">
+                <article class="category">
+                    <span class="category__icon"><i class="uil uil-bitcoin-circle"></i></span>
+                    <h5> <a href="https://www.geeksforgeeks.org/blockchain/" target="_blank"> Blockchain </a></h5>
+                    <p>Blockchain is a secure way of recording transactions.</p>
+                </article>
+
+                <article class="category">
+                    <span class="category__icon"><i class="uil uil-palette"></i></span>
+                    <h5> <a href="https://www.geeksforgeeks.org/graphic-design/"> Graphic Design </a></h5>
+                    <p>Graphic Design can be found on anything from billboards to mobile apps.</p>
+                </article>
+
+                <article class="category">
+                    <span class="category__icon"><i class="uil uil-usd-circle"></i></span>
+                    <h5> <a href="https://www.geeksforgeeks.org/finance/">Finance </a></h5>
+                    <p>The specialised study of how an individual or a company manages its funds is known as Finance.
+                    </p>
+                </article>
+
+                <article class="category">
+                    <span class="category__icon"><i class="uil uil-megaphone"></i></span>
+                    <h5><a href="https://www.geeksforgeeks.org/marketing/"> Marketing </a></h5>
+                    <p>Marketing is key in management, involving activities to promote goods or services for sale.</p>
+                </article>
+
+                <article class="category">
+                    <span class="category__icon"><i class="uil uil-play"></i></span>
+                    <h5> <a href="https://www.geeksforgeeks.org/expert/interview-experiences/">Interview Experiences </a></h5>
+                    <p>
+                    Dive into transformative interview experiences on our EdTech platform.</p>
+                </article>
+                <article class="category">
+                    <span class="category__icon"><i class="uil uil-puzzle-piece"></i></span>
+                    <h5> <a href="https://www.geeksforgeeks.org/introduction-to-business/"> Business</a></h5>
+                    <p>Business is the pursuit of profit through the exchange of goods and services.</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =============End Category================ -->
+
+    <!-- ==============Courses/ Features Section ================= -->
+    <section class="courses">
+        <h2 style="color: gray;">📌GeeksforGeeks 2.0 Features</h2>
+        <div class="container courses__container">
+            <article class="course">
+                <div class="course__image">
+                    <img src="https://i.ibb.co/Vgd9zcz/pathway.png" alt="">
+                </div>
+                <div class="course__info">
+                    <br><br>
+                    <h4>RoadMap For Beginner</h4>
+                    <p style="text-align: justify;"> In this section, you will find the roadmap designed for beginners
+                        aiming to pursue a career in
+                        web development. It encompasses coding languages and frameworks essential for navigating this
+                        field effectively.</p>
+                    <a href="{% url 'blog' %}" class="btn btn-primary">Learn More
+                    </a>
+                </div>
+            </article>
+
+            <article class="course">
+                <div class="course__image">
+                    <img src="https://i.ibb.co/QfPPcq1/pycom.png" alt="compiler">
+
+                </div>
+                <div class="course__info">
+                    <h4>GeeksforGeeks 2.0 Compiler</h4>
+                    <p style="text-align: justify;">This is the updated version of the Compiler, featuring a new counter
+                        feature. Users can now set a
+                        specific time limit to solve any problem. Additionally, when the allotted time is up, a flash
+                        message will be displayed.</p>
+                    <a href="{% url 'compiler' %}" class="btn btn-primary">Learn More
+                    </a>
+                </div>
+            </article>
+
+            <article class="course">
+                <div class="course__image">
+                    <img src="https://i.ibb.co/HNKz0P4/result.png" alt="">
+                </div>
+                <br><br>
+                <div class="course__info">
+                    <h4>CGPA Calculator</h4>
+                    <p style="text-align: justify;">This is the CGPA Calculator. With this tool, you can calculate your
+                        Cumulative Grade Point Average (CGPA) and generate your results in a proper PDF format. </p>
+                    <a href="{% url 'cgpa_calculator' %}" class="btn btn-primary">Learn More
+                    </a>
+                </div>
+            </article>
+
+            <article class="course">
+                <div class="course__image">
+                    <img src="https://i.ibb.co/2dYgSwr/resume.png" alt="">
+                </div>
+                <div class="course__info">
+                    <h4>GeeksforGeeks 2.0 Resume Builder</h4>
+                    <p style="text-align: justify;">GeeksforGeeks 2.0 enables you to create a professional resume by
+                        filling out a simple form. Once
+                        submitted, your resume is generated and can be downloaded in PDF format.
+                    </p>
+                    <a href="{% url 'resume_form' %}" class="btn btn-primary">Learn More
+                    </a>
+                </div>
+            </article>
+
+            <article class="course">
+                <div class="course__image">
+                    <img src="https://i.ibb.co/0QNByLs/hack.png" alt="">
+                </div>
+
+                <div class="course__info">
+                    <h4>Upcoming Hackathon</h4>
+                    <p style="text-align: justify;">In this section, you can find comprehensive information about all
+                        the hackathons hosted by
+                        GeeksforGeeks 2.0. This includes details about past, present, and upcoming hackathons. </p>
+                    <a href="{% url 'filter' %}" class="btn btn-primary">Learn More
+                    </a>
+                </div>
+            </article>
+
+            <article class="course">
+                <div class="course__image">
+                    <img src="https://i.ibb.co/xgxd8pb/tech-stack.webp" alt="tech-stack">
+                </div>
+                <div class="course__info">
+                    <h4> Article-Tech Stack </h4>
+                    <p style="text-align: justify;">Delve into our article on Tech Stack, unraveling the latest trends and best practices. Navigate the dynamic landscape of technology choices, frameworks, and tools. Stay informed, make informed decisions, and elevate your development journey with our comprehensive insights.
+                    </p>
+                    <a href="https://kaleidoscopic-chimera-6f4157.netlify.app/" class="btn btn-primary" target="_blank">Learn More</a>
+
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===============End Courses/ End Features ===================== -->
+
+    <!-- ===============Testimonial ================== -->
+
+    <section class="container testimonials__container mySwiper">
+        <h2 style="color:rgb(98, 95, 95);">Student Testimonials</h2>
+        <div class="swiper-wrapper">
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://i.ibb.co/x7X23xr/images-1.jpg" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Sudha Murti</h5>
+                    <small>Placed In Google</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Hello, I have been practicing questions on this site for the last 2 years and recently I got
+                        placed at Google. Really loved the breadth of concepts and topics available on this site. Great
+                        work guys!! Thank you</p>
+                </div>
+            </article>
+
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://i.ibb.co/Cnfbq5b/images-2.jpg" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Smriti john</h5>
+                    <small>Placed In Google, Amazon</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>I am Siddharth Rajpal, a 2014 passout from NSIT and I used to visit your website to prepare for
+                        job interviews and once I was ready I started applying to various companies. I got recruited at
+                        Google, Amazon,</p>
+                </div>
+            </article>
+
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://i.ibb.co/0KjGkTM/images-3.jpg" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Kyoo San Martin Monroy</h5>
+                    <small>Amazon(2014) Google(2015)
+                    </small>
+                </div>
+                <div class="testimonial__body">
+                    <p>I just want to say “Thank you for create GeeksForGeeks”. My life change when I was accepted first
+                        in Amazon (2014) and then in Google( 2015), and it was possible studying everything from the
+                        GeeksforGeeks.</p>
+                </div>
+            </article>
+
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://i.ibb.co/GTwV16Q/images-4.jpg" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Vivek Kumar Thakur</h5>
+                    <small>Placed In Amazon</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Thank you for providing great platform for learning. Recently amazon visited our campus and I was
+                        interviewed by Amazon and got the offer just because of geeksforgeeks. Thanks a lot.</p>
+                </div>
+            </article>
+
+            <article class="testimonial swiper-slide">
+                <div class="avatar">
+                    <img src="https://i.ibb.co/p39HdxN/images-5.jpg" alt="">
+                </div>
+                <div class="testimonial__info">
+                    <h5>Murlidar Setty</h5>
+                    <small>Placed</small>
+                </div>
+                <div class="testimonial__body">
+                    <p>Thank you so much for providing one of the best portal to learn problem solving techniques,
+                        programming languages, Puzzles and many more.</p>
+                </div>
+            </article>
+        </div>
+        <div class="swiper-pagination"></div>
+    </section>
+
+    <!-- ===================End Testimonials==================== -->
+
+    <!-- ===============FAQ======================= -->
+
+    <section class="faqs">
+        <h2 style="color:rgb(98, 95, 95);">📑Frequently Asked Questions</h2>
+        <div class="container faqs__container">
+            <article class="faq ">
+                <div class="faq__icon"><i class="uil uil-plus"></i></div>
+                <div class="question__answer">
+                    <h4>Will I actually get 90% of my course fee back?</h4>
+                    <p>Yes, To qualify for the refund,you must complete 90% of the course content within 90 days from
+                        the date of purchase.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon"><i class="uil uil-plus"></i></div>
+                <div class="question__answer">
+                    <h4>Is there any number to contact for queries?</h4>
+                    <p>You may call us on +91-7982906637 in case of any query.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon"><i class="uil uil-plus"></i></div>
+                <div class="question__answer">
+                    <h4>How can I enroll for this program?</h4>
+                    <p>You need to fill out an Application form post initial registration. After that, your application
+                        will be reviewed by our team to assess your eligibility for this program.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon"><i class="uil uil-plus"></i></div>
+                <div class="question__answer">
+                    <h4>What if I am not selected?</h4>
+                    <p>You will be able to re-apply to the program based on your eligibility criteria.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon"><i class="uil uil-plus"></i></div>
+                <div class="question__answer">
+                    <h4>Once I am enrolled in the program, for how long will the course content be available for?</h4>
+                    <p>The course content will be available for a period of 1 year from the date of purchase.</p>
+                </div>
+            </article>
+
+            <article class="faq">
+                <div class="faq__icon"><i class="uil uil-plus"></i></div>
+                <div class="question__answer">
+                    <h4>Can I make the payment through PayPal?</h4>
+                    <p>Yes. Mail us with your details at courses@geeksforgeeks.org.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ========================End FAQ===================== -->
+
+    <!-- =================================Footer===================== -->
+
+    <footer>
+        <div class="container footer__container">
+            <div class="footer__1">
+                <a href="{% url 'index' %}" class="footer__logo"><a href="{% url 'index' %}">
+                        <img src="https://i.ibb.co/091CdMm/download-removebg-preview.png" alt="">
+                    </a>
+                    <p>
+                        <i class="uil uil-location-point"></i> A-143, 9th Floor, Sovereign Corporate Tower, Sector-136,
+                        Noida, Uttar Pradesh - 201305
+                    </p>
+            </div>
+            <div class="footer__2">
+                <h4>Explore</h4>
+                <ul class="permalinks">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__3">
+                <h4>Legal</h4>
+                <ul class="privacy">
+                    <li><a href="https://www.geeksforgeeks.org/legal/privacy-policy/">Privacy Policy</a></li>
+                    <li><a href="    https://www.geeksforgeeks.org/terms-and-conditions/">Terms and conditions</a></li>
+                    <li><a href="https://www.geeksforgeeks.org/terms-of-service">Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer__4">
+                <h4>Contact Us</h4>
+                <div>
+                    <p>08069289001</p>
+                    <p>Noida, Uttar Pradesh (201305)</p>
+                </div>
+                <ul class="footer__socials">
+                    <li>
+                        <a href="https://www.facebook.com/geeksforgeeks.org/"><i class="uil uil-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/geeks_for_geeks/"><i class="uil uil-instagram-alt"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/geeksforgeeks"><i class="uil uil-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://in.linkedin.com/company/geeksforgeeks"><i class="uil uil-linkedin-alt"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer__copyright">
+            <small> <strong style="color: green; font-size:16px">GeeksforGeeks 2.0</strong> &copy; All Right Reserved</small>
+        </div>
+    </footer>
+
+    <!-- ============================End Footer=========================== -->
+
+
+
+    <!-- ==================== JS Logic ================== -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+
+            //when window width is >=600px
+            breakpoints: {
+                600: {
+                    slidesPerView: 2,
+                }
+            }
+        });
+    </script>
+
+    <!-- ================ Chatbot =================== -->
+    <script type="text/javascript">
+        (function (d, m) {
+            var kommunicateSettings =
+                { "appId": "3943966ff60990eb5d31300da5379cd", "popupWidget": true, "automaticChatOpenOnNavigation": true };
+            var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+            var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+            window.kommunicate = m; m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+        /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+    </script>
+
+    <!-- =================== Scrolling and Website animation JS Logic ================ -->
+    <script>
+        //change navbar styles on scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('nav').classList.toggle
+                ('window-scroll', window.scrollY > 0)
+        })
+        //show /hid faq answer
+        const faqs = document.querySelectorAll('.faq');
+        faqs.forEach(faq => {
+            faq.addEventListener('click', () => {
+                faq.classList.toggle('open');
+
+                //change icon 
+                const icon = faq.querySelector('.faq__icon i');
+                if (icon.className === 'uil uil-plus') {
+                    icon.className = 'uil uil-minus';
+                } else {
+                    icon.className = 'uil uil-plus';
+
+                }
+
+            })
+        });
+
+        // Show / hide nav menu 
+        const menu = document.querySelector(".nav__menu");
+        const menuBtn = document.querySelector("#open-menu-btn");
+        const closeBtn = document.querySelector("#close-menu-btn");
+
+        menuBtn.addEventListener('click', () => {
+            menu.style.display = "flex";
+            closeBtn.style.display = 'inline-block';
+            menuBtn.style.display = "none";
+        });
+
+        // Close nav menu 
+        const closeNav = () => {
+            menu.style.display = "none";
+            closeBtn.style.display = 'none';
+            menuBtn.style.display = 'inline-block';
+        };
+        closeBtn.addEventListener('click', closeNav);
+    </script>
+
+
+
+</body>
+
+</html>

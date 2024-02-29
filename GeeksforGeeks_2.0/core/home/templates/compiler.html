@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="https://i.ibb.co/LnKMFN8/geeksforgeeks-logo-removebg-preview.png" type="image/x-icon">
+    <title>GeeksforGeeks 2.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.2/mode/python/python.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f7;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        form {
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        #timerDisplay {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        #timerDisplay.red {
+            color: red;
+        }
+
+        #timerDisplay.green {
+            color: green;
+        }
+
+        #codearea,
+        #output {
+            height: 300px;
+            font-size: 16px;
+            width: 100%;
+            border: 1px solid green;
+            border-radius: 5px;
+            padding: 12px;
+            margin-bottom: 24px;
+            resize: vertical;
+        }
+
+        #output {
+            height: 150px;
+            padding: 5px;
+        }
+
+        button {
+            color: green;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid green;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ======================== Compiler Logic =========================== -->
+
+    <h2 style="font-family: 'Times New Roman', Times, serif; "> <a href="{% url 'index' %}"
+            style="color: green; text-decoration:none;">GeeksforGeeks</a></str>
+        Python Compiler</h2>
+    <form action="/runcode" method="post">
+
+        {% csrf_token %}
+        <div id="timerDisplay"></div>
+        <label for="timer">Set Timer (in seconds): </label>
+        <input type="number" id="timer" name="timer" min="1" value="10">
+        <button type="button" onclick="startTimer()">Start</button>
+        <button type="button" onclick="stopTimer()">Stop</button>
+        <button type="button" onclick="resetTimer()">Reset</button>
+        <div>
+            <br>
+            <label for="codearea">Code Area</label>
+            <textarea id="codearea" name="codearea" rows="10">{{ code }}</textarea>
+        </div>
+        <hr>
+        <div>
+            <label for="output">Output</label>
+            <textarea id="output" name="output" rows="4" disabled>{{ output }}</textarea>
+        </div>
+        <button type="submit">Run Code</button>
+    </form>
+
+
+    <!-- =============================  JS Logic ================== -->
+    <script>
+        var codeEditor = CodeMirror.fromTextArea(document.getElementById("codearea"), {
+            mode: "python",
+            lineNumbers: true,
+            indentUnit: 4,
+            extraKeys: { Tab: "indentMore", "Shift-Tab": "indentLess" },
+        });
+        var timerInterval;
+        var timeLeft;
+        function startTimer() {
+            timeLeft = document.getElementById("timer").value;
+
+            timerInterval = setInterval(function () {
+                document.getElementById("timerDisplay").innerHTML = "Time Left: " + timeLeft + " seconds";
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Time is up!");
+                    document.getElementById("timerDisplay").innerHTML = "Time is up!";
+                } else {
+                    if (timeLeft <= 5) {
+                        document.getElementById("timerDisplay").classList.add("red");
+                        document.getElementById("timerDisplay").classList.remove("green");
+                    } else {
+                        document.getElementById("timerDisplay").classList.add("green");
+                        document.getElementById("timerDisplay").classList.remove("red");
+                    }
+                    timeLeft--;
+                }
+            }, 1000);
+        }
+        function stopTimer() {
+            clearInterval(timerInterval);
+        }
+        function resetTimer() {
+            clearInterval(timerInterval);
+            document.getElementById("timerDisplay").innerHTML = "";
+            document.getElementById("timer").value = "";
+            document.getElementById("timerDisplay").classList.remove("red");
+            document.getElementById("timerDisplay").classList.remove("green");
+        }
+    </script>
+
+    <!-- ====================== Chatbot ======================== -->
+    <script type="text/javascript">
+
+        (function (d, m) {
+            var kommunicateSettings =
+                { "appId": "3943966ff60990eb5d31300da5379cd", "popupWidget": true, "automaticChatOpenOnNavigation": true };
+            var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+            s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+            var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+            window.kommunicate = m; m._globals = kommunicateSettings;
+        })(document, window.kommunicate || {});
+
+    </script>
+
+</body>
+
+</html>
