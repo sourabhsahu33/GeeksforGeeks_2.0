@@ -9,6 +9,13 @@ Feeling accomplished! Just participated in the GFG Edtech Challenge and introduc
 
 GeeksforGeeks 2.0 is here with a host of exciting features to elevate your coding experience.
 
+**Project Preview** - 
+
+
+https://github.com/sourabhsahu33/GeeksforGeeks_2.0/assets/104298270/442f49c2-01f9-4c1f-b5d0-228ba5ca7998
+
+
+
 ## Features Showcase
 
 - **Homepage Overhaul:** A redesigned landing page for an enriched user experience.
