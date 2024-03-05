@@ -38,7 +38,6 @@ GeeksforGeeks 2.0 is here with a host of exciting features to elevate your codin
 
 ## Project Preview
 
-![GeeksforGeeks 2.0](https://github.com/sourabhsahu33/GeeksforGeeks_2.0/assets/104298270/a8165ce6-b831-413d-9f80-14ce937891e4)
 
 ## Running the Project - Quick Guide
 
